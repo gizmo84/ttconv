@@ -45,6 +45,8 @@ import ttconv.stl.reader as stl_reader
 import ttconv.vtt.reader as vtt_reader
 from ttconv.vtt.config import VTTWriterConfiguration
 import ttconv.vtt.writer as vtt_writer
+import ttconv.srv3.writer as srv3_writer
+from ttconv.srv3.config import SRV3WriterConfiguration
 from ttconv.config import GeneralConfiguration
 from ttconv.config import ModuleConfiguration
 from ttconv.imsc.config import IMSCWriterConfiguration
@@ -178,6 +180,7 @@ class FileTypes(Enum):
   SRT = "srt"
   STL = "stl"
   VTT = "vtt"
+  SRV3 = "srv3"
 
   @staticmethod
   def get_file_type(file_type: str, file_extension: str):
@@ -435,6 +438,12 @@ def convert(args):
     #
     with open(outputfile, "w", encoding="utf-8") as vtt_file:
       vtt_file.write(vtt_document)
+
+  elif writer_type is FileTypes.SRV3:
+    writer_config = read_config_from_json(SRV3WriterConfiguration, json_config_data)
+    srv3_document = srv3_writer.from_model(model, writer_config, progress_callback_write)
+    with open(outputfile, "w", encoding="utf-8") as srv_file:
+      srv_file.write(srv3_document)
 
   else:
     if args.otype is not None:
