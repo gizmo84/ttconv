@@ -198,6 +198,10 @@ class IMSCAppTest(unittest.TestCase):
     self.assertEqual(tt.FileTypes.SRT, tt.FileTypes.get_file_type(tt.FileTypes.SRT.value, "asdf"))
     self.assertEqual(tt.FileTypes.SRT, tt.FileTypes.get_file_type(None, "srt"))
 
+    self.assertEqual(tt.FileTypes.SRV3, tt.FileTypes.get_file_type(tt.FileTypes.SRV3.value, None))
+    self.assertEqual(tt.FileTypes.SRV3, tt.FileTypes.get_file_type(tt.FileTypes.SRV3.value, "asdf"))
+    self.assertEqual(tt.FileTypes.SRV3, tt.FileTypes.get_file_type(None, "srv3"))
+
   def test_document_lang_override(self):
     out_path = "build/body_only.out.es-419.ttml"
     in_path = "src/test/resources/ttml/body_only.ttml"

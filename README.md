@@ -54,6 +54,7 @@ suggestions/contributions are welcome.
 * [SubRip/.srt](https://en.wikipedia.org/wiki/SubRip)
 * [IMSC 1.1 Text Profile/.ttml](https://www.w3.org/TR/ttml-imsc1.1/#text-profile)
 * [WebVTT](https://www.w3.org/TR/webvtt1/)
+* YouTube SRV3 subtitle format (.srv3)
 
 ## Quick start
 
@@ -72,7 +73,7 @@ tt convert -i <input .scc file> -o <output .ttml file>
 `tt convert [-h] -i INPUT -o OUTPUT [--itype ITYPE] [--otype OTYPE] [--config CONFIG] [--config_file CONFIG_FILE]`
 
 * `--itype`: `TTML` | `SCC` | `STL` | `SRT` (extrapolated from the filename, if omitted)
-* `--otype`: `TTML` | `SRT` | `VTT` (extrapolated from the filename, if omitted)
+* `--otype`: `TTML` | `SRT` | `VTT` | `SRV3` (extrapolated from the filename, if omitted)
 * `--filter`: specifies by name a filter to be applied to the content
 * `--config` and `--config_file`: JSON dictionary where each property specifies
   (optional) configuration parameters for readers, writers and filters.
@@ -208,6 +209,10 @@ Default: `false`
 `true` means that the VTT writer outputs cue identifiers
 
 Default: `true`
+
+### SRV3 Writer configuration (`"srv3_writer"`)
+
+The SRV3 writer has no specific configuration options.
 
 ### SCC Reader configuration
 
